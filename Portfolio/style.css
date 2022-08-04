@@ -1,0 +1,223 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+}
+
+.hero{
+    background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 2)),
+    url("./imagenes/fondo\ basico2.jpg");
+    background-size:cover;
+    min-height: 150px;
+    color: white;
+}
+
+.nav{
+    --state-close: scale(0);
+    --state-hamburguer: scale(1);
+    --state-menu: translate(-100%);
+
+    padding: 40px 0;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: repeat(2,max-content);
+}
+
+.nav:target{
+    --state-menu: translate(0);
+    --state-close: scale(1);
+    --state-hamburguer: scale(0);
+}
+
+.nav_logo{
+    font-size: 2.5rem;
+    z-index: 1;
+}
+
+.nav_hamburguer, 
+.nav_close{
+    cursor: pointer;
+    grid-column: -2/-1;
+    grid-row: 1/2;
+    transition: .4s transform;
+}
+
+.nav_hamburguer{
+    transform: var(--state-hamburguer) ;
+}
+
+.nav_close{
+    transform: var(--state-close);
+}
+
+.nav_icon{
+    width: 40px;
+}
+
+.nav_links{
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+
+    display: grid;
+    align-content: center;
+    gap: 5em;
+    padding-left: 5%;
+
+    transform: var(--state-menu);
+    transition: .3s transform;
+}
+
+.nav_items{
+    list-style: none;
+}
+
+.nav_link{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+#mi-historia .container{
+    text-align: center;
+    padding: 200px 12px;
+}
+
+#intereses{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+#intereses .container{
+    padding: 100px 20px;
+}
+
+#intereses h2{
+    margin-top: 0px;
+    font-size: 2.7em ;
+}
+
+#intereses p{
+    display: none;
+}
+
+#intereses .carta{
+    background-position: center center;
+    background-size: cover;
+    padding: 10%; 
+    margin: 20px 10px;
+    border-radius: 8px;
+}
+
+.carta:first-child{
+   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("imagenes/fondo\ basico.jpg"); 
+}
+
+.carta:nth-child(2){
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("imagenes/fondo\ basico2.jpg");
+}
+
+.carta:nth-child(3){
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("imagenes/fondo\ redes.jpg"); 
+}
+
+@media (min-width: 768px) {
+
+    .hero{
+        background-position: 50% 50%;
+    }
+ 
+    .nav{
+        --state-hamburguer: scale(0);
+        --state-menu: translate(0);
+    }
+    
+    .nav:target{
+        --state-close: scale(0);
+    }
+
+    .nav_links{
+        padding: 0;
+        background-color: unset;
+        position: unset;
+        gap: 2em;
+        grid-auto-flow: column;
+    
+        transform:unset;
+
+        grid-column: -2/-1;
+        grid-row: 1/2;
+    }
+
+    .nav_link{
+        font-size: 1rem;
+        letter-spacing: none;
+    }
+
+    #mi-historia .container{
+        display: flex;
+        justify-content: center;
+        }
+    
+    #mi-historia .texto{
+        width: 50%;
+        max-width: 600px;
+        text-align: initial;
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        }
+    
+    #mi-historia h2{
+        margin-top: 0px;
+        }
+    
+    #mi-historia .img-container{
+        background-image: url("imagenes/mano\ robot\ mano\ humana.jpg");
+        background-size: cover;
+        background-position: center center;
+        height: 500px;
+        width: 500px;
+        padding: 0px;
+        }
+
+        #intereses .intereses{
+            display: flex;
+            justify-content: center;
+        }
+        
+        #intereses p{
+            display: block;
+            margin-bottom: 30px;
+        }
+        
+        #intereses h3{
+            margin-top: 0;
+        }
+        
+        #intereses .carta{
+            padding: 50px 70px;
+        }
+}
